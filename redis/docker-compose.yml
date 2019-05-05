@@ -1,0 +1,82 @@
+version: '3.7'
+
+x-image:
+ &redis-image
+ redis:latest
+
+x-restart:
+ &default-restart
+ always
+
+services:
+ redis1:
+  container_name: redis-cluster-node-1
+  image: *redis-image
+  network_mode: host
+  restart: *default-restart
+  command: redis-server /etc/redis/redis.conf
+  volumes:
+  - /home/user/software/docker/container-config/redis/redis-cluster/7001/data:/data
+  - /home/user/software/docker/container-config/redis/redis-cluster/7001/redis.conf:/etc/redis/redis.conf
+  environment:
+  - REDIS_PORT=7001
+
+ redis2:
+  container_name: redis-cluster-node-2
+  image: *redis-image
+  network_mode: host
+  restart: *default-restart
+  command: redis-server /etc/redis/redis.conf
+  volumes:
+  - /home/user/software/docker/container-config/redis/redis-cluster/7002/data:/data
+  - /home/user/software/docker/container-config/redis/redis-cluster/7002/redis.conf:/etc/redis/redis.conf
+  environment:
+  - REDIS_PORT=7002
+
+ redis3:
+  container_name: redis-cluster-node-3
+  image: *redis-image
+  network_mode: host
+  restart: *default-restart
+  command: redis-server /etc/redis/redis.conf
+  volumes:
+  - /home/user/software/docker/container-config/redis/redis-cluster/7003/data:/data
+  - /home/user/software/docker/container-config/redis/redis-cluster/7003/redis.conf:/etc/redis/redis.conf
+  environment:
+  - REDIS_PORT=7003
+
+ redis4:
+  container_name: redis-cluster-node-4
+  image: *redis-image
+  network_mode: host
+  restart: *default-restart
+  command: redis-server /etc/redis/redis.conf
+  volumes:
+  - /home/user/software/docker/container-config/redis/redis-cluster/7004/data:/data
+   - /home/user/software/docker/container-config/redis/redis-cluster/7004/redis.conf:/etc/redis/redis.conf
+  environment:
+  - REDIS_PORT=7004
+
+ redis5:
+  container_name: redis-cluster-node-5
+  image: *redis-image
+  network_mode: host
+  restart: *default-restart
+  command: redis-server /etc/redis/redis.conf
+  volumes:
+  - /home/user/software/docker/container-config/redis/redis-cluster/7005/data:/data
+  - /home/user/software/docker/container-config/redis/redis-cluster/7005/redis.conf:/etc/redis/redis.conf
+  environment:
+  - REDIS_PORT=7005
+
+ redis6:
+  container_name: redis-cluster-node-6
+  image: *redis-image
+  network_mode: host
+  restart: *default-restart
+  command: redis-server /etc/redis/redis.conf
+  volumes:
+  - /home/user/software/docker/container-config/redis/redis-cluster/7006/data:/data
+  - /home/user/software/docker/container-config/redis/redis-cluster/7006/redis.conf:/etc/redis/redis.conf
+  environment:
+  - REDIS_PORT=7006
